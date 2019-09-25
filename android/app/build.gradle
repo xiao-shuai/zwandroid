@@ -131,8 +131,8 @@ android {
         applicationId "com.woainimen"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.2.0"
         manifestPlaceholders = [
                   JPUSH_APPKEY: "c53fe6a44d22aba639464b8d",         //在此替换你的APPKey
                   JPUSH_CHANNEL: "default"        //在此替换你的channel
