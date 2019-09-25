@@ -26,6 +26,41 @@ import {
 import {store} from './shouhu/config/data'
 import SHOUHU from './shouhu/config/config'
 import {Provider} from 'mobx-react'
+import JPush from 'jpush-react-native';
+
+// componentDidMount() {
+  JPush.init();
+  //连接状态
+  this.connectListener = result => {
+    console.log("connectListener:" + JSON.stringify(result))
+  };
+  JPush.addConnectEventListener(this.connectListener);
+  //通知回调
+  this.notificationListener = result => {
+    console.log("notificationListener:" + JSON.stringify(result))
+  };
+  JPush.addNotificationListener(this.notificationListener);
+  //自定义消息回调
+  this.customMessageListener = result => {
+    console.log("customMessageListener:" + JSON.stringify(result))
+  };
+  JPush.addCustomMessagegListener(this.customMessageListener);
+  //本地通知回调 todo
+  this.localNotificationListener = result => {
+    console.log("localNotificationListener:" + JSON.stringify(result))
+  };
+  JPush.addLocalNotificationListener(this.localNotificationListener);
+  //tag alias事件回调
+  this.tagAliasListener = result => {
+    console.log("tagAliasListener:" + JSON.stringify(result))
+  };
+  JPush.addTagAliasListener(this.tagAliasListener);
+  //手机号码事件回调
+  this.mobileNumberListener = result => {
+    console.log("mobileNumberListener:" + JSON.stringify(result))
+  };
+  JPush.addMobileNumberListener(this.mobileNumberListener);
+// }
 console.disableYellowBox=true
 const App = () => {
   return (

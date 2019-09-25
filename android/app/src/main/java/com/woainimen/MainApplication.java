@@ -16,6 +16,8 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 
+import cn.jiguang.plugins.push.JPushModule;
+
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -31,7 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
       @SuppressWarnings("UnnecessaryLocalVariable")
       List<ReactPackage> packages = new PackageList(this).getPackages();
       // Packages that cannot be autolinked yet can be added manually here, for example:
-      // packages.add(new SplashScreenReactPackage());
+      // packages.add(new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG));
       return packages;
     }
 
@@ -50,5 +52,7 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    //调用此方法：点击通知让应用从后台切到前台
+    // JPushModule.registerActivityLifecycle(this);
   }
 }
