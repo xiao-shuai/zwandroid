@@ -62,6 +62,8 @@ import JPush from 'jpush-react-native';
   JPush.addMobileNumberListener(this.mobileNumberListener);
 // }
 console.disableYellowBox=true
+
+
 const App = () => {
   return (
     <Provider {...store}>

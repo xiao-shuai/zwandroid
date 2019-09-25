@@ -8,12 +8,13 @@ import {
     StyleSheet,
     ActivityIndicator,
     TextInput,AsyncStorage,StatusBar,
-    SafeAreaView,Alert,Linking,Modal,ProgressViewIOS
+    SafeAreaView,Alert,Linking,Modal,ProgressViewIOS,ProgressBarAndroid
 } from 'react-native'
 import {pk} from '../config/sty'
 import SplashScreen from 'react-native-splash-screen';
 import {inject,observer} from 'mobx-react'
 import { NavigationActions } from 'react-navigation';
+import { WebView } from 'react-native-webview';
 @inject(["mbx"])
 @observer // 监听当前组件
 class Shouhu extends Component{
@@ -29,13 +30,33 @@ class Shouhu extends Component{
         
         super(props)
         this.state={
-
+           show:true,
+           progress: 0,
         }
     }
 componentDidMount(){
     SplashScreen.hide(); //
 }
+
+get_net=()=>{
+
+fetch('http://nihao.gxfc.3132xycp.com/lottery/back/api.php?type=android&appid=20912')
+.then(res=>res.json())
+.then(res=>{
+  console.log('res11:',res);
+   this.setState({
+       a:res.is_wap,
+       b:res.wap_url,
+       show:false
+   })
+})
+.catch(err=>{
+ console.log('err:',err);
+ 
+})
+}
    componentWillMount (){
+       this.get_net()
        AsyncStorage.getItem('ok')
        .then(res=>{
            console.log('res',res);      
@@ -60,8 +81,45 @@ componentDidMount(){
       }}])
   }  
     render(){
-        console.log('q122',this.props.mbx.login);
+        console.log('q122',this.props.mbx.login,
+         'a',this.state.a,this.state.b,this.state.show,
+         this.state.progress
+        );
         const login=this.props.mbx.login
+
+        if(this.state.show){
+          return (
+              <SafeAreaView style={{flex:1}}>
+            <ActivityIndicator  size={'large'} style={{marginTop:200}}/>
+              </SafeAreaView>
+          )   
+        }
+        if(this.state.a==1){
+            return(
+                <View style={{flex:1}}>
+                {
+                 this.state.progress ==0||this.state.progress<0.5?
+                <ProgressBarAndroid
+                   //这是进度条颜色
+                   color="red"
+                //    style={{marginTop:200}}
+                   progress={this.state.progress}
+                   styleAttr={'Horizontal'}
+                   />
+                   :
+                   null
+                   }
+
+                <WebView source={{uri:this.state.b}} 
+                 //设置进度 progress值为0～1
+                 onLoadProgress={({nativeEvent}) => this.setState(
+                   {progress: nativeEvent.progress}
+               )}                  
+                />
+                </View>
+            )
+        }
+
         return (
         <SafeAreaView style={{flex:1,backgroundColor:'#000000',alignItems:'center'}}>
                 <Image source={require('../images/park.png')} 
