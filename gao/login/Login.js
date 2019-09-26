@@ -104,9 +104,12 @@ class Login extends Component{
                 </TouchableOpacity>
   
                 <TouchableOpacity onPress={()=>{
-                    Linking.openURL('https://shimo.im/docs/YrVGjGR66VGYCTp3')
-                }}>
-                    <Text style={{fontSize:18,marginTop:20,color:'#BDC3C7'}}>Login represents that you have read and agreed to the `doughnut` agreement</Text>
+                    // Linking.openURL('https://shimo.im/docs/YrVGjGR66VGYCTp3')
+                    this.props.navigation.navigate('Xieyi')
+                }} style={{alignItems:'center'}}>
+                    <View style={{width:'90%'}}>
+                    <Text style={{fontSize:16,marginTop:20,color:'#BDC3C7'}}>Login represents that you have read and agreed to the `doughnut` agreement</Text>
+                    </View>
                 </TouchableOpacity>
                  
         
