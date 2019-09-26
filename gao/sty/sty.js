@@ -1,7 +1,7 @@
 import {Dimensions} from 'react-native'
 const { width, height } = Dimensions.get('window')
 
-export const pk={
+export const gao={
     w:width,
     h:height,   
     theme:"#FF707EFF",

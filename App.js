@@ -23,10 +23,11 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import {store} from './shouhu/config/data'
-import SHOUHU from './shouhu/config/config'
+
 import {Provider} from 'mobx-react'
 import JPush from 'jpush-react-native';
+import SOME_PAGE from './gao/route/route'
+import store from './gao/data/data'
 
 // componentDidMount() {
   JPush.init();
@@ -67,7 +68,7 @@ console.disableYellowBox=true
 const App = () => {
   return (
     <Provider {...store}>
-    <SHOUHU />
+   <SOME_PAGE />
     </Provider>
   );
 };
