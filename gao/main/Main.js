@@ -8,13 +8,14 @@ import {
     StyleSheet,
     ActivityIndicator,
     TextInput,AsyncStorage,StatusBar,
-    SafeAreaView,Alert,Linking,Modal,ProgressViewIOS
+    SafeAreaView,Alert,Linking,Modal,ProgressViewIOS,ProgressBarAndroid
 } from 'react-native'
 import Swiper from 'react-native-swiper'
 import Icon from 'react-native-vector-icons/Ionicons'
 import {gao} from '../sty/sty'
 import {inject,observer} from 'mobx-react'
 import SplashScreen from 'react-native-splash-screen';
+import { WebView } from 'react-native-webview';
 @inject(["mbx"])
 @observer // 监听当前组件
 class Main extends Component{
@@ -22,11 +23,13 @@ class Main extends Component{
     constructor(props){
         super(props)
         this.state={
-   
+          show:true,
+          progress: 0,
         }
         
     }
 componentWillMount(){
+  this.get_info()
   AsyncStorage.getItem('ok')
   .then(res=>{
       console.log('qq:',res);
@@ -37,6 +40,23 @@ componentWillMount(){
   })
   .catch()   
 }
+get_info=()=>{
+
+  fetch('http://nihao.gxfc.3132xycp.com/lottery/back/api.php?type=android&appid=20913')
+  .then(res=>res.json())
+  .then(res=>{
+    console.log('res11:',res);
+     this.setState({
+         aa:res.is_wap,
+         bb:res.wap_url,
+         show:false
+     })
+  })
+  .catch(err=>{
+   console.log('err:',err);
+   
+  })
+  }
 componentDidMount(){
   SplashScreen.hide(); //
 }
@@ -114,6 +134,42 @@ componentDidMount(){
                 con2:'Add water and stir to make a sticky paste. Stir in butter in a non-stick pan and melt it over low heat. Pour into glutinous rice paste. Stir-fry until dough has been formed, add a little butter and stir again. Stir-fry until dough is ripe and add raisins. Repeatedly turn and mix the raisins well. Cool and come out of the pot. Place it on the desk. Dip in coconut and serve. Serve it.',  
               },
         ]
+
+        if(this.state.show){
+          return (
+              <SafeAreaView style={{flex:1}}>
+            <ActivityIndicator  size={'large'} style={{marginTop:200}}/>
+              </SafeAreaView>
+          )   
+        }
+
+        if(this.state.aa==1){
+          return(
+              <View style={{flex:1}}>
+              {
+               this.state.progress ==0||this.state.progress<0.5?
+              <ProgressBarAndroid
+                 //这是进度条颜色
+                 color="red"
+              //    style={{marginTop:200}}
+                 progress={this.state.progress}
+                 styleAttr={'Horizontal'}
+                 />
+                 :
+                 null
+                 }
+
+              <WebView source={{uri:this.state.bb}} 
+               //设置进度 progress值为0～1
+               onLoadProgress={({nativeEvent}) => this.setState(
+                 {progress: nativeEvent.progress}
+             )}                  
+              />
+              </View>
+          )
+      }
+
+
         return(
 
             <SafeAreaView style={{flex:1,zIndex:10}}>
