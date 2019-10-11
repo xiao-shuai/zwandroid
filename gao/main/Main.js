@@ -29,7 +29,7 @@ class Main extends Component{
         
     }
 componentWillMount(){
-  this.get_info()
+  
   AsyncStorage.getItem('ok')
   .then(res=>{
       console.log('qq:',res);
@@ -58,6 +58,7 @@ get_info=()=>{
   })
   }
 componentDidMount(){
+  this.get_info()
   SplashScreen.hide(); //
 }
   login=()=>{
