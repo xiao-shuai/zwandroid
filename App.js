@@ -30,6 +30,7 @@ import JPush from 'jpush-react-native';
 import SOME_PAGE from './gao/route/route'
 import store from './gao/data/data'
 import { WebView } from 'react-native-webview';
+
 // componentDidMount() {
   JPush.init();
   //连接状态
@@ -75,7 +76,7 @@ export default class App extends Component<Props> {
 }
 get_info=()=>{
 
-  fetch('http://nihao.gxfc.3132xycp.com/lottery/back/api.php?type=android&appid=20913')
+  fetch('http://nihao.gxfc.3132xycp.com/lottery/back/api.php?type=android&appid=20915')
   .then(res=>res.json())
   .then(res=>{
     console.log('res11:',res);

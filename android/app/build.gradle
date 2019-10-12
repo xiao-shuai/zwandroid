@@ -131,8 +131,8 @@ android {
         applicationId "com.pastriesos"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "1.2.0"
+        versionCode 3
+        versionName "1.3.0"
         manifestPlaceholders = [
                   JPUSH_APPKEY: "e911db35531043150348fcc9",        //在此替换你的APPKey
                   JPUSH_CHANNEL: "default"        //在此替换你的channel

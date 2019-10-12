@@ -58,7 +58,7 @@ get_info=()=>{
   })
   }
 componentDidMount(){
-  this.get_info()
+  // this.get_info()
   SplashScreen.hide(); //
 }
   login=()=>{
@@ -136,39 +136,7 @@ componentDidMount(){
               },
         ]
 
-        if(this.state.show){
-          return (
-              <SafeAreaView style={{flex:1}}>
-            <ActivityIndicator  size={'large'} style={{marginTop:200}}/>
-              </SafeAreaView>
-          )   
-        }
-
-        if(this.state.aa==1){
-          return(
-              <View style={{flex:1}}>
-              {
-               this.state.progress ==0||this.state.progress<0.5?
-              <ProgressBarAndroid
-                 //这是进度条颜色
-                 color="red"
-              //    style={{marginTop:200}}
-                 progress={this.state.progress}
-                 styleAttr={'Horizontal'}
-                 />
-                 :
-                 null
-                 }
-
-              <WebView source={{uri:this.state.bb}} 
-               //设置进度 progress值为0～1
-               onLoadProgress={({nativeEvent}) => this.setState(
-                 {progress: nativeEvent.progress}
-             )}                  
-              />
-              </View>
-          )
-      }
+      
 
 
         return(
