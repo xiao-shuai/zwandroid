@@ -26,9 +26,10 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import {Provider} from 'mobx-react'
+import store from './main/mbx/mbx'
 import JPush from 'jpush-react-native';
-import SOME_PAGE from './gao/route/route'
-import store from './gao/data/data'
+import THIS_PAGE from './main/pz/page'
+// import store from './gao/data/data'
 import { WebView } from 'react-native-webview';
 
 // componentDidMount() {
@@ -136,7 +137,7 @@ get_info=()=>{
 
     return (
       <Provider {...store}>
-   <SOME_PAGE />
+    <THIS_PAGE />
     </Provider>
     );
   }
