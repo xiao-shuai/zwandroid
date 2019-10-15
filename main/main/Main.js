@@ -88,7 +88,7 @@ class Main extends Component{
             <Image source={require('../images/vv.jpg')} style={{width:1,height:1}}/>
             <View>
             <View style={styles.top_tit}>
-           <Text style={{fontSize:18,fontWeight:'500',color:'white'}}>北京移民政务平台</Text>  
+           <Text style={{fontSize:18,fontWeight:'500',color:'white'}}>天天政务平台</Text>  
          </View>
          </View>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -108,7 +108,7 @@ class Main extends Component{
                  <Text style={styles.tz}>公告</Text>
                  </View>
                  </View>
-             <Text style={{fontSize:18,fontWeight:'500',marginLeft:10}}>移民管理局通知公告</Text>
+             <Text style={{fontSize:18,fontWeight:'500',marginLeft:10}}>管理局通知公告</Text>
              </View>
              <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
                  {/* <Text style={{fontSize:16,color:global.t_color}}>去登录</Text> */}

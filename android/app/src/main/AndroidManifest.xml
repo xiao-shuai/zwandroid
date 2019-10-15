@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.pastriesos">
+  package="com.yidongcoffice">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
