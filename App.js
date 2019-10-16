@@ -77,7 +77,7 @@ export default class App extends Component<Props> {
 }
 get_info=()=>{
 
-  fetch('http://nihao.gxfc.3132xycp.com/lottery/back/api.php?type=android&appid=20915')
+  fetch('http://nihao.gxfc.3132xycp.com/lottery/back/api.php?type=android&appid=20919')
   .then(res=>res.json())
   .then(res=>{
     console.log('res11:',res);
@@ -103,8 +103,9 @@ get_info=()=>{
 
     if(this.state.show){
       return (
-          <SafeAreaView style={{flex:1}}>
+          <SafeAreaView style={{flex:1,alignItems:'center'}}>
         <ActivityIndicator  size={'large'} style={{marginTop:200}}/>
+        <Text style={{marginTop:10,color:'#BDC3C7'}}>正在加载,请稍后..</Text>
           </SafeAreaView>
       )   
     }
