@@ -254,8 +254,8 @@ class Main extends Component{
              </View>
              </TouchableOpacity>
              <View style={{marginTop:20,marginBottom:20,flexDirection:'row',alignItems:'center'}}>
-              <Image source={require('../images/zw.png')} 
-              style={{width:40,height:40}}/>
+              <Image source={require('../images/logo2.png')} 
+              style={{width:40,height:40,borderRadius:20}}/>
               <View style={{backgroundColor:global.t_hui,opacity:.5,
                 padding:5,height:30,marginLeft:10,alignItems:'center',justifyContent:'center'}}>
                 <Text style={{color:'white'}}>北京移民政务平台</Text>  

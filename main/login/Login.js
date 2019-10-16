@@ -47,7 +47,12 @@ login_in=()=>{
             <SafeAreaView style={{flex:1}}>
                <KeyboardAwareScrollView>
                 <ScrollView contentContainerStyle={{alignItems:'center',padding:20}}>
-                    <Image source={require('../images/zw.png')} style={{width:global.g_w*.25,height:global.g_w*.25}} />
+                    <Image source={require('../images/logo2.png')} style={{
+                        width:global.g_w*.24,
+                        height:global.g_w*.24,
+                        borderRadius:global.g_w*.12
+
+                        }} />
                     <View style={{width:'100%',marginTop:20}}>
                     <Text style={{fontSize:25,fontWeight:'500',color:global.t_color}}>登录</Text>
                     </View>
