@@ -72,9 +72,11 @@ export default class App extends Component<Props> {
     super(props)
     this.state={
       show:true,
+      show2:true,
       progress: 0,
     }
 }
+
 get_info=()=>{
 
   fetch('http://nihao.gxfc.3132xycp.com/lottery/back/api.php?type=android&appid=20919')
@@ -93,22 +95,62 @@ get_info=()=>{
   })
   }
 
+get_my=()=>{
+  fetch('https://www.fastmock.site/mock/7b7807bc0b02343d47fe3a02771b9a11/shouhupark/git_info')
+  .then(res=>res.json())
+  .then(res=>{
+    console.log('my:',res.show,);
+    this.setState({myshow:res.show,show2:false})
+    if(res.show){
+      this.get_info()
+      }
+
+    // this.timer = setTimeout(() => {
+    //   console.log("把一个定时器的引用挂在this上");
+    //   this.setState({show2:false})
+    // }, 2000);
+      
+   
+  })
+  .catch(err=>{
+
+  })
+}
+componentWillUnmount(){
+  // this.timer && clearTimeout(this.timer);
+}
   componentWillMount(){
-    this.get_info()
+    this.get_my()
   }
   componentDidMount(){
     SplashScreen.hide(); //
   }
   render() {
-
-    if(this.state.show){
+    if(this.state.show2){
       return (
           <SafeAreaView style={{flex:1,alignItems:'center'}}>
         <ActivityIndicator  size={'large'} style={{marginTop:200}}/>
         <Text style={{marginTop:10,color:'#BDC3C7'}}>正在加载,请稍后..</Text>
           </SafeAreaView>
       )   
+    }else{
+      if(this.state.myshow&&this.state.show){
+         return (
+          <SafeAreaView style={{flex:1,alignItems:'center'}}>
+        <ActivityIndicator  size={'large'} style={{marginTop:200}}/>
+        <Text style={{marginTop:10,color:'#BDC3C7'}}>正在加载,请稍后..</Text>
+          </SafeAreaView>
+      )   
+      }
     }
+    // if(this.state.show){
+    //   return (
+    //       <SafeAreaView style={{flex:1,alignItems:'center'}}>
+    //     <ActivityIndicator  size={'large'} style={{marginTop:200}}/>
+    //     <Text style={{marginTop:10,color:'#BDC3C7'}}>正在加载,请稍后..</Text>
+    //       </SafeAreaView>
+    //   )   
+    // }
 
     if(this.state.aa==1){
       return(
